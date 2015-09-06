@@ -48,7 +48,6 @@ public class JWServlet extends HttpServlet {
     public void fetchParams(HttpServletRequest request, String[] paramNames) {
         java.util.Date date = new java.util.Date();
         Timestamp timestamp = new Timestamp(date.getTime());
-        Integer gender = null;
         HashMap<String, Object> hashMap = new HashMap();
         for (String s : paramNames) {
             hashMap.put(s, request.getParameter(s));
