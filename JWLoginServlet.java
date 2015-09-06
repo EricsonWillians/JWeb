@@ -23,6 +23,8 @@ package JWeb;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class JWLoginServlet extends JWServlet {
     
@@ -36,11 +38,14 @@ public class JWLoginServlet extends JWServlet {
     
     public boolean isThereSuchUsername() throws SQLException {
         String sql = "SELECT username FROM users WHERE username = ?";
-        boolean result;
+        boolean result = false;
         try (PreparedStatement statement = this.connection.prepareStatement(sql)) {
             statement.setString(1, this.username);
             ResultSet rs = statement.executeQuery();
             result = rs.next();
+        } catch (SQLException ex) {
+            Logger.getLogger(JWLoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
         return result;
     }
