@@ -22,6 +22,7 @@ package JWeb;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.RequestDispatcher;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -29,12 +30,13 @@ import java.util.ArrayList;
 public class JWServlet extends HttpServlet {
     
     private static final long serialVersionUID = 1L;
-    protected String dbDriver;
-    protected String dbURL;
-    protected String dbUser;
-    protected String dbPassword;
-    protected Connection connection;
-    protected HashMap<String, Object> requestData;
+    private String dbDriver;
+    private String dbURL;
+    private String dbUser;
+    private String dbPassword;
+    private Connection connection;
+    private HashMap<String, Object> requestData;
+    private RequestDispatcher requestDispatcher;
     
     public JWServlet(String driver, String dbURL, String dbUser, String dbPassword) throws SQLException, ClassNotFoundException {
         this.dbDriver = driver;
@@ -53,21 +55,21 @@ public class JWServlet extends HttpServlet {
             hashMap.put(s, request.getParameter(s));
         }
         hashMap.put("timestamp", timestamp);
-        this.requestData = hashMap;
+        requestData = hashMap;
     }
     
     public Object getParam(String paramName) {
-        return this.requestData.get(paramName);
+        return requestData.get(paramName);
     }
     
     public ArrayList<Object> getParams() {
         ArrayList<Object> params = new ArrayList();
-        this.requestData.keySet().stream().forEach((key) -> {
-            params.add(this.requestData.get(key));
+        requestData.keySet().stream().forEach((key) -> {
+            params.add(requestData.get(key));
         });
         return params;
     }
-    
+
     public String getDbDriver() {
         return dbDriver;
     }
@@ -100,12 +102,28 @@ public class JWServlet extends HttpServlet {
         this.dbPassword = dbPassword;
     }
 
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
+
     public HashMap<String, Object> getRequestData() {
         return requestData;
     }
 
     public void setRequestData(HashMap<String, Object> requestData) {
         this.requestData = requestData;
+    }
+
+    public RequestDispatcher getRequestDispatcher() {
+        return requestDispatcher;
+    }
+
+    public void setRequestDispatcher(RequestDispatcher requestDispatcher) {
+        this.requestDispatcher = requestDispatcher;
     }
     
 }

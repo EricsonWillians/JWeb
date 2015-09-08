@@ -37,7 +37,7 @@ public class JWRegisterServlet extends JWServlet {
     public boolean hasRecord(String username, String email) throws SQLException {
         String sql = "SELECT username, email FROM users WHERE username = ? OR email = ?";
         boolean result = false;
-        try (PreparedStatement statement = this.connection.prepareStatement(sql)) {
+        try (PreparedStatement statement = getConnection().prepareStatement(sql)) {
             statement.setString(1, username);
             statement.setString(2, email);
             ResultSet rs = statement.executeQuery();

@@ -29,8 +29,8 @@ import java.util.logging.Logger;
 public class JWLoginServlet extends JWServlet {
     
     private static final long serialVersionUID = 1L;
-    protected String username;
-    protected String password;
+    private String username;
+    private String password;
     
     public JWLoginServlet(String driver, String dbURL, String dbUser, String dbPassword) throws SQLException, ClassNotFoundException {
         super(driver, dbURL, dbUser, dbPassword);
@@ -39,8 +39,8 @@ public class JWLoginServlet extends JWServlet {
     public boolean isThereSuchUsername() throws SQLException {
         String sql = "SELECT username FROM users WHERE username = ?";
         boolean result = false;
-        try (PreparedStatement statement = this.connection.prepareStatement(sql)) {
-            statement.setString(1, this.username);
+        try (PreparedStatement statement = getConnection().prepareStatement(sql)) {
+            statement.setString(1, username);
             ResultSet rs = statement.executeQuery();
             result = rs.next();
         } catch (SQLException ex) {
@@ -48,6 +48,22 @@ public class JWLoginServlet extends JWServlet {
             ex.printStackTrace();
         }
         return result;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
     
 }
