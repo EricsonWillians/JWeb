@@ -28,19 +28,18 @@ import java.nio.charset.Charset;
 @SuppressWarnings("FieldMayBeFinal")
 public class JWHTMLPage implements JWDisplayable {
 
-    private final String title;
     private String html;
     private Document doc;
     private Element head;
     private Element body;
     
     public JWHTMLPage(String title, Charset charset) {
-        this.title = title;
         html = "<!DOCTYPE html><html><head></head><body></body></html>";
         doc = Jsoup.parse(html);
         doc.charset(charset);
         head = doc.head();
         body = doc.body();
+        head.append("<title>" + title + "</title>");
     }
 
     @Override
