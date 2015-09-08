@@ -18,7 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-package JWeb;
+
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
