@@ -44,12 +44,15 @@ public class JWServlet extends HttpServlet {
     /**
      *
      * @param driver
+     * Database driver.
      * @param dbURL
+     * Database URL.
      * @param dbUser
+     * Username used to connect to the database.
      * @param dbPassword
+     * Password of the username used to the connect to the database.
      * @throws SQLException
      * @throws ClassNotFoundException
-     * Database connection related constructor parameters.
      */
     public JWServlet(String driver, String dbURL, String dbUser, String dbPassword) throws SQLException, ClassNotFoundException {
         this.dbDriver = driver;
@@ -61,10 +64,11 @@ public class JWServlet extends HttpServlet {
     }
     
     /**
-     *
-     * @param request
-     * @param paramNames
      * Fetches all the parameters with the given parameter names, storing them inside the JWServlet inner HashMap (requestData).
+     * @param request
+     * HttpServletRequest object.
+     * @param paramNames
+     * Array of String objects (The name of each parameter).
      */
     public void fetchParams(HttpServletRequest request, String[] paramNames) {
         java.util.Date date = new java.util.Date();
@@ -80,7 +84,7 @@ public class JWServlet extends HttpServlet {
     /**
      *
      * @param paramName
-     * @return Object
+     * @return 
      * Returns the given parameter associated with the parameter name.
      */
     public Object getParam(String paramName) {
@@ -89,7 +93,7 @@ public class JWServlet extends HttpServlet {
     
     /**
      *
-     * @return ArrayList<Object>
+     * @return
      * Returns all parameters.
      */
     public ArrayList<Object> getParams() {
@@ -102,7 +106,7 @@ public class JWServlet extends HttpServlet {
 
     /**
      *
-     * @return String
+     * @return
      * Returns the Database Driver.
      */
     public String getDbDriver() {
@@ -120,7 +124,7 @@ public class JWServlet extends HttpServlet {
 
     /**
      *
-     * @return String
+     * @return 
      * Returns the Database Uniform Resource Locator.
      */
     public String getDbURL() {
@@ -138,7 +142,7 @@ public class JWServlet extends HttpServlet {
 
     /**
      *
-     * @return String
+     * @return 
      * Returns the username used to connect to the database.
      */
     public String getDbUser() {
@@ -156,7 +160,7 @@ public class JWServlet extends HttpServlet {
 
     /**
      *
-     * @return String
+     * @return 
      * Returns the password of the username used to connect to the database.
      */
     public String getDbPassword() {
@@ -174,7 +178,7 @@ public class JWServlet extends HttpServlet {
 
     /**
      *
-     * @return Connection
+     * @return
      * Returns the connection object.
      */
     public Connection getConnection() {
@@ -192,7 +196,7 @@ public class JWServlet extends HttpServlet {
 
     /**
      *
-     * @return HashMap<String, Object>
+     * @return 
      * Returns the HashMap with all the parameters extracted from the Request object as values.
      */
     public HashMap<String, Object> getRequestData() {
@@ -210,7 +214,7 @@ public class JWServlet extends HttpServlet {
 
     /**
      *
-     * @return RequestDispatcher
+     * @return 
      * Returns the request dispatcher associated with the JWServlet.
      */
     public RequestDispatcher getRequestDispatcher() {

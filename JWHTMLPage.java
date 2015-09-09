@@ -87,7 +87,7 @@ public class JWHTMLPage implements JWDisplayable {
     
     /**
      *
-     * @return String
+     * @return
      * Returns the html of the HTML-like object.
      */
     public String getHTML() {
