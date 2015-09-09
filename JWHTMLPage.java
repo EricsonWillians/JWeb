@@ -26,8 +26,7 @@ import java.nio.charset.Charset;
 /**
  *
  * @author EricsonWillians
- * JWHTMLPage.
- * An editable HTML-like object.
+ * Developer at JWillians.
  */
 @SuppressWarnings("FieldMayBeFinal")
 public class JWHTMLPage implements JWDisplayable {
@@ -38,10 +37,11 @@ public class JWHTMLPage implements JWDisplayable {
     private Element body;
     
     /**
-     *
+     * JWHTMLPage Constructor.
      * @param title
+     * HTML document's title.
      * @param charset
-     * HTML title and default encoding.
+     * HTML document's default encoding.
      */
     public JWHTMLPage(String title, Charset charset) {
         html = "<!DOCTYPE html><html><head></head><body></body></html>";
@@ -86,8 +86,8 @@ public class JWHTMLPage implements JWDisplayable {
     }
     
     /**
-     *
-     * @return
+     * Get HTML.
+     * @return String
      * Returns the html of the HTML-like object.
      */
     public String getHTML() {
@@ -95,7 +95,7 @@ public class JWHTMLPage implements JWDisplayable {
     }
 
     /**
-     *
+     * Set HTML.
      * @param html
      * Sets the html of the HTML-like object.
      */
@@ -104,26 +104,26 @@ public class JWHTMLPage implements JWDisplayable {
     }
 
     /**
-     *
-     * @return
-     * Returns the doc of the HTML-like object.
+     * Get document.
+     * @return Document
+     * Returns the Jsoup doc of the HTML-like object.
      */
     public Document getDoc() {
         return doc;
     }
 
     /**
-     *
+     * Set document.
      * @param doc
-     * Sets the doc of the HTML-like object.
+     * Sets the Jsoup doc of the HTML-like object.
      */
     public void setDoc(Document doc) {
         this.doc = doc;
     }
 
     /**
-     *
-     * @return
+     * Get head.
+     * @return Element
      * Returns the Jsoup head element of the HTML-like object.
      */
     public Element getHead() {
@@ -131,7 +131,7 @@ public class JWHTMLPage implements JWDisplayable {
     }
 
     /**
-     *
+     * Set head.
      * @param head
      * Sets the Jsoup head element of the HTML-like object.
      */
@@ -140,8 +140,8 @@ public class JWHTMLPage implements JWDisplayable {
     }
 
     /**
-     *
-     * @return
+     * Get body.
+     * @return Element
      * Returns the Jsoup body element of the HTML-like object.
      */
     public Element getBody() {
@@ -149,7 +149,7 @@ public class JWHTMLPage implements JWDisplayable {
     }
 
     /**
-     *
+     * Set body.
      * @param body
      * Sets the Jsoup head element of the HTML-like object.
      */
