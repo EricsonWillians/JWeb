@@ -26,5 +26,6 @@ public interface JWDisplayable {
     public void addJS(String link);
     public void setViewport(String content);
     public void appendToBody(String html);
+    public void updateHTML();
     
 }

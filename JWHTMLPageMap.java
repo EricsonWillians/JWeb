@@ -18,8 +18,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -28,10 +26,10 @@ import java.util.Set;
 import java.util.TreeSet;
 
 @SuppressWarnings("FieldMayBeFinal")
-public class JWHTMLPageMap<String, JWHTMLPage> implements Map<String, JWHTMLPage> {
+public class JWHTMLPageMap<J extends JWHTMLPage> implements Map<String, J> , JWDisplayable {
  
     private ArrayList<String> pageNames;
-    private ArrayList<JWHTMLPage> pages;
+    private ArrayList<J> pages;
     
     public JWHTMLPageMap() {
         pageNames = new ArrayList();
@@ -59,53 +57,53 @@ public class JWHTMLPageMap<String, JWHTMLPage> implements Map<String, JWHTMLPage
     }
     
     @Override
-    public JWHTMLPage get(Object pageName) {
+    public J get(Object pageName) {
         int i = pageNames.indexOf(pageName);
         if (i == -1) {
             return null;
         }
-        return pages.get(i);
+        return (J) pages.get(i);
     }
 
     @Override
-    public Object put(Object pageName, Object page) {
+    public J put(String pageName, J page) {
         for (int i = 0; i < pageNames.size(); i++) {
-            Object old = pageNames.get(i);
+            String old = pageNames.get(i);
             if (((Comparable) pageName).compareTo(pageNames.get(i)) == 0) {
-                pageNames.set(i, (String) pageName);
-                return old;
+                pageNames.set(i, pageName);
+                return pages.get(i);
             }
             if (((Comparable) pageName).compareTo(pageNames.get(i)) == +1) {
                 int where = i > 0 ? i -1 : 0;
-                pageNames.add(where, (String) pageName);
-                pages.add(where, (JWHTMLPage) page);
+                pageNames.add(where, pageName);
+                pages.add(where, page);
                 return null;
             }
         }
         
-        pageNames.add((String) pageName);
-        pages.add((JWHTMLPage) page);
+        pageNames.add(pageName);
+        pages.add(page);
         return null;
     }
 
     @Override
-    public JWHTMLPage remove(Object pageName) {
+    public J remove(Object pageName) {
         int i = pageNames.indexOf(pageName);
         if (i == -1) {
             return null;
         }
-        JWHTMLPage old = pages.get(i);
+        J old = pages.get(i);
         pageNames.remove(i);
         pages.remove(i);
         return old;
     }
 
     @Override
-    public void putAll(Map<? extends String, ? extends JWHTMLPage> m) {
+    public void putAll(Map<? extends String, ? extends J> m) {
         Iterator pagesIter = m.keySet().iterator();
         while (pagesIter.hasNext()) {
             String pageName = (String) pagesIter.next();
-            JWHTMLPage page = m.get(pageName);
+            J page = m.get(pageName);
             put(pageName, page);
         }
     }
@@ -122,12 +120,47 @@ public class JWHTMLPageMap<String, JWHTMLPage> implements Map<String, JWHTMLPage
     }
 
     @Override
-    public Collection<JWHTMLPage> values() {
+    public Collection<J> values() {
         return pages;
     }
 
     @Override
-    public Set<Entry<String, JWHTMLPage>> entrySet() {
+    public void addCSS(String link) {
+        pages.stream().forEach((page) -> {
+            page.addCSS(link);
+        });
+    }
+
+    @Override
+    public void addJS(String link) {
+        pages.stream().forEach((page) -> {
+            page.addJS(link);
+        });
+    }
+
+    @Override
+    public void setViewport(String content) {
+        pages.stream().forEach((page) -> {
+            page.setViewport(content);
+        });
+    }
+
+    @Override
+    public void appendToBody(String html) {
+        pages.stream().forEach((page) -> {
+            page.appendToBody(html);
+        });
+    }
+
+    @Override
+    public void updateHTML() {
+        pages.stream().forEach((page) -> {
+            page.updateHTML();
+        });
+    }
+    
+    @Override
+    public Set<Entry<String, J>> entrySet() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

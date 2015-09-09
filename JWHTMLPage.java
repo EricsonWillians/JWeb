@@ -38,33 +38,46 @@ public class JWHTMLPage implements JWDisplayable {
         head = doc.head();
         body = doc.body();
         head.append("<title>" + title + "</title>");
+        updateHTML();
     }
 
     @Override
     public void addCSS(String link) {
         head.append("<link rel=\"stylesheet\" href=\"" + link + "\" type=\"text/css\">");
+        updateHTML();
     }
 
     @Override
     public void addJS(String link) {
         head.append("<script src=\"" + link + "\"></script>");
+        updateHTML();
     }
 
     @Override
     public void setViewport(String content) {
         head.append("<meta name=\"viewport\" content=\"" + content + "\" />");
+        updateHTML();
     }
 
     @Override
     public void appendToBody(String html) {
         body.append(html);
+        updateHTML();
     }
 
-    public String getHtml() {
+    @Override
+    public final void updateHTML() {
+        setHTML(getDoc().html());
+        setDoc(Jsoup.parse(getHTML()));
+        head = doc.head();
+        body = doc.body();
+    }
+    
+    public String getHTML() {
         return html;
     }
 
-    public void setHtml(String html) {
+    public void setHTML(String html) {
         this.html = html;
     }
 
@@ -91,5 +104,5 @@ public class JWHTMLPage implements JWDisplayable {
     public void setBody(Element body) {
         this.body = body;
     }
-    
+
 }
