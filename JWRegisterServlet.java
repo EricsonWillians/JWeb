@@ -27,33 +27,38 @@ import java.util.logging.Logger;
 /**
  *
  * @author EricsonWillians.
- * JWRegisterServlet (JWServlet sublass)
+ * Developer at JWillians.
  */
 public class JWRegisterServlet extends JWServlet {
  
     private static final long serialVersionUID = 1L;
     
     /**
-     *
+     * Database connection related parameters.
      * @param driver
+     * Database driver.
      * @param dbURL
+     * Database URL.
      * @param dbUser
+     * Username used to connect to the database.
      * @param dbPassword
+     * Password of the username used to connect to the database.
      * @throws SQLException
      * @throws ClassNotFoundException
-     * Database connection related constructor parameters.
      */
     public JWRegisterServlet(String driver, String dbURL, String dbUser, String dbPassword) throws SQLException, ClassNotFoundException {
         super(driver, dbURL, dbUser, dbPassword);
     }
     
     /**
-     *
+     * Has record in the database?
      * @param username
+     * Username.
      * @param email
-     * @return
-     * @throws SQLException
+     * Email associated with the given username.
+     * @return boolean
      * Returns true if the given username or email exists in the database.
+     * @throws SQLException
      */
     public boolean hasRecord(String username, String email) throws SQLException {
         String sql = "SELECT username, email FROM users WHERE username = ? OR email = ?";

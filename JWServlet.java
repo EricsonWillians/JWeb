@@ -28,7 +28,7 @@ import java.util.ArrayList;
 /**
  *
  * @author EricsonWillians
- * JWServlet HttpServlet object.
+ * Developer at JWillians.
  */
 public class JWServlet extends HttpServlet {
     
@@ -42,7 +42,7 @@ public class JWServlet extends HttpServlet {
     private RequestDispatcher requestDispatcher;
     
     /**
-     *
+     * Database connection related parameters.
      * @param driver
      * Database driver.
      * @param dbURL
@@ -50,7 +50,11 @@ public class JWServlet extends HttpServlet {
      * @param dbUser
      * Username used to connect to the database.
      * @param dbPassword
+<<<<<<< HEAD
      * Password of the username used to the connect to the database.
+=======
+     * Password of the username used to connect to the database.
+>>>>>>> master
      * @throws SQLException
      * @throws ClassNotFoundException
      */
@@ -67,8 +71,13 @@ public class JWServlet extends HttpServlet {
      * Fetches all the parameters with the given parameter names, storing them inside the JWServlet inner HashMap (requestData).
      * @param request
      * HttpServletRequest object.
+<<<<<<< HEAD
      * @param paramNames
      * Array of String objects (The name of each parameter).
+=======
+     * @param paramNames 
+     * Array of String objects (Parameter names).
+>>>>>>> master
      */
     public void fetchParams(HttpServletRequest request, String[] paramNames) {
         java.util.Date date = new java.util.Date();
@@ -82,9 +91,14 @@ public class JWServlet extends HttpServlet {
     }
     
     /**
-     *
+     * Get parameter.
      * @param paramName
+<<<<<<< HEAD
      * @return 
+=======
+     * The parameter name.
+     * @return Object
+>>>>>>> master
      * Returns the given parameter associated with the parameter name.
      */
     public Object getParam(String paramName) {
@@ -92,9 +106,15 @@ public class JWServlet extends HttpServlet {
     }
     
     /**
+<<<<<<< HEAD
      *
      * @return
      * Returns all parameters.
+=======
+     * Get parameters.
+     * @return ArrayList|Object|.
+     * Returns an ArrayList of all parameters within requestData (The values).
+>>>>>>> master
      */
     public ArrayList<Object> getParams() {
         ArrayList<Object> params = new ArrayList();
@@ -105,44 +125,61 @@ public class JWServlet extends HttpServlet {
     }
 
     /**
+<<<<<<< HEAD
      *
      * @return
      * Returns the Database Driver.
+=======
+     * Get database driver.
+     * @return String
+     * Returns the database driver.
+>>>>>>> master
      */
     public String getDbDriver() {
         return dbDriver;
     }
 
     /**
-     *
+     * Set database driver.
      * @param dbDriver
-     * Sets the Database Driver.
+     * Sets the database driver.
      */
     public void setDbDriver(String dbDriver) {
         this.dbDriver = dbDriver;
     }
 
     /**
+<<<<<<< HEAD
      *
      * @return 
      * Returns the Database Uniform Resource Locator.
+=======
+     * Get database URL.
+     * @return String
+     * Returns the database Uniform Resource Locator.
+>>>>>>> master
      */
     public String getDbURL() {
         return dbURL;
     }
 
     /**
-     *
+     * Set database URL.
      * @param dbURL
-     * Sets the Database Uniform Resource Locator.
+     * Sets the database Uniform Resource Locator.
      */
     public void setDbURL(String dbURL) {
         this.dbURL = dbURL;
     }
 
     /**
+<<<<<<< HEAD
      *
      * @return 
+=======
+     * Get database username.
+     * @return String
+>>>>>>> master
      * Returns the username used to connect to the database.
      */
     public String getDbUser() {
@@ -150,7 +187,7 @@ public class JWServlet extends HttpServlet {
     }
 
     /**
-     *
+     * Set database username.
      * @param dbUser
      * Sets the username used to connect to the database.
      */
@@ -160,7 +197,11 @@ public class JWServlet extends HttpServlet {
 
     /**
      *
+<<<<<<< HEAD
      * @return 
+=======
+     * @return
+>>>>>>> master
      * Returns the password of the username used to connect to the database.
      */
     public String getDbPassword() {
@@ -168,7 +209,7 @@ public class JWServlet extends HttpServlet {
     }
 
     /**
-     *
+     * Database password.
      * @param dbPassword
      * Sets the password of the username used to connect to the database.
      */
@@ -177,8 +218,13 @@ public class JWServlet extends HttpServlet {
     }
 
     /**
+<<<<<<< HEAD
      *
      * @return
+=======
+     * Get connection.
+     * @return Connection
+>>>>>>> master
      * Returns the connection object.
      */
     public Connection getConnection() {
@@ -186,7 +232,7 @@ public class JWServlet extends HttpServlet {
     }
 
     /**
-     *
+     * Set connection.
      * @param connection
      * Sets the connection object.
      */
@@ -195,8 +241,13 @@ public class JWServlet extends HttpServlet {
     }
 
     /**
+<<<<<<< HEAD
      *
      * @return 
+=======
+     * Get request data.
+     * @return HashMap|String, Object|
+>>>>>>> master
      * Returns the HashMap with all the parameters extracted from the Request object as values.
      */
     public HashMap<String, Object> getRequestData() {
@@ -204,7 +255,7 @@ public class JWServlet extends HttpServlet {
     }
 
     /**
-     *
+     * Set request data.
      * @param requestData
      * Sets the HashMap with all the parameters extracted from the Request object as values.
      */
@@ -213,8 +264,13 @@ public class JWServlet extends HttpServlet {
     }
 
     /**
+<<<<<<< HEAD
      *
      * @return 
+=======
+     * Get request dispatcher.
+     * @return RequestDispatcher
+>>>>>>> master
      * Returns the request dispatcher associated with the JWServlet.
      */
     public RequestDispatcher getRequestDispatcher() {
@@ -222,7 +278,7 @@ public class JWServlet extends HttpServlet {
     }
 
     /**
-     *
+     * Set request dispatcher.
      * @param requestDispatcher
      * Sets the request dispatcher associated with the JWServlet.
      */

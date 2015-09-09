@@ -21,35 +21,34 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /**
  *
  * @author EricsonWillians
- * JWDisplayable Interface.
- * To be used with HTML-like objects.
+ * Developer at JWillians.
  */
 
 public interface JWDisplayable {
     
     /**
-     *
+     * Add CSS.
      * @param link
      * Adds a Cascading Style Sheet link to the given HTML-like object.
      */
     public void addCSS(String link);
 
     /**
-     *
+     * AddJS.
      * @param link
      * Adds a link to a JavaScript file to the given HTML-like object.
      */
     public void addJS(String link);
 
     /**
-     *
+     * Set viewport.
      * @param content
      * Sets the viewport content in the given HTML-like object.
      */
     public void setViewport(String content);
 
     /**
-     *
+     * Append to body.
      * @param html
      * Appends HTML to the body of the given HTML-like object.
      */
