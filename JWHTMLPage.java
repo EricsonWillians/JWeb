@@ -24,7 +24,6 @@ import org.jsoup.nodes.Element;
 import java.nio.charset.Charset;
 
 /**
- *
  * @author EricsonWillians
  * Developer at JWillians.
  */
@@ -38,10 +37,8 @@ public class JWHTMLPage implements JWDisplayable {
     
     /**
      * JWHTMLPage Constructor.
-     * @param title
-     * HTML document's title.
-     * @param charset
-     * HTML document's default encoding.
+     * @param title - String
+     * @param charset - Charset
      */
     public JWHTMLPage(String title, Charset charset) {
         html = "<!DOCTYPE html><html><head></head><body></body></html>";
@@ -86,72 +83,64 @@ public class JWHTMLPage implements JWDisplayable {
     }
     
     /**
-     * Get HTML.
-     * @return String
      * Returns the html of the HTML-like object.
+     * @return String
      */
     public String getHTML() {
         return html;
     }
 
     /**
-     * Set HTML.
-     * @param html
      * Sets the html of the HTML-like object.
+     * @param html - String
      */
     public void setHTML(String html) {
         this.html = html;
     }
 
     /**
-     * Get document.
-     * @return Document
      * Returns the Jsoup doc of the HTML-like object.
+     * @return Document
      */
     public Document getDoc() {
         return doc;
     }
 
     /**
-     * Set document.
-     * @param doc
      * Sets the Jsoup doc of the HTML-like object.
+     * @param doc - Document
      */
     public void setDoc(Document doc) {
         this.doc = doc;
     }
 
     /**
-     * Get head.
-     * @return Element
      * Returns the Jsoup head element of the HTML-like object.
+     * @return Element
      */
     public Element getHead() {
         return head;
     }
 
     /**
-     * Set head.
-     * @param head
      * Sets the Jsoup head element of the HTML-like object.
+     * @param head - Element
      */
     public void setHead(Element head) {
         this.head = head;
     }
 
     /**
-     * Get body.
-     * @return Element
      * Returns the Jsoup body element of the HTML-like object.
+     * @return Element
      */
     public Element getBody() {
         return body;
     }
 
     /**
-     * Set body.
-     * @param body
      * Sets the Jsoup head element of the HTML-like object.
+     * @param body - Element
      */
     public void setBody(Element body) {
         this.body = body;

@@ -18,15 +18,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.RequestDispatcher;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletResponse;
 
 /**
- *
  * @author EricsonWillians
  * Developer at JWillians.
  */
@@ -39,18 +45,15 @@ public class JWServlet extends HttpServlet {
     private String dbPassword;
     private Connection connection;
     private HashMap<String, Object> requestData;
+    private JWHTMLPageMap pageMap;
     private RequestDispatcher requestDispatcher;
     
     /**
      * Database connection related parameters.
-     * @param driver
-     * Database driver.
-     * @param dbURL
-     * Database URL.
-     * @param dbUser
-     * Username used to connect to the database.
-     * @param dbPassword
-     * Password of the username used to connect to the database.
+     * @param driver - String, Database driver.
+     * @param dbURL - String, Database URL.
+     * @param dbUser - String, Username used to connect to the database.
+     * @param dbPassword - String, Password of the username used to connect to the database.
      * @throws SQLException
      * @throws ClassNotFoundException
      */
@@ -61,6 +64,7 @@ public class JWServlet extends HttpServlet {
         this.dbPassword = dbPassword;
         Class.forName(this.dbDriver);
         this.connection = DriverManager.getConnection(this.dbURL, this.dbUser, this.dbPassword);
+        pageMap = new JWHTMLPageMap();
     }
     
     /**
@@ -82,20 +86,49 @@ public class JWServlet extends HttpServlet {
     }
     
     /**
-     * Get parameter.
-     * @param paramName
-     * The parameter name.
-     * @return Object
+     * Dispatches the client to the given destination (Resource).
+     * @param request - HttpServletRequest object.
+     * @param response - HttpServletResponse object.
+     * @param destiny  - String
+     */
+    public void dispatchClient(HttpServletRequest request, HttpServletResponse response, String destiny) {
+        setRequestDispatcher(request.getRequestDispatcher(destiny));
+        try {
+            getRequestDispatcher().forward(request, response);
+        } catch (ServletException | IOException ex) {
+            Logger.getLogger(JWServlet.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
+    }
+    
+    /**
+     * Prints the desired page in the client (Web browser), given a response object.
+     * @param response - HttpServletResponse object.
+     * @param pageName - String.
+     */
+    public void print(HttpServletResponse response, String pageName) {
+        try {
+            response.setCharacterEncoding("UTF-8");
+            PrintWriter pw = response.getWriter();
+            pw.write(getPageMap().get(pageName).getHTML());
+        } catch (IOException ex) {
+            Logger.getLogger(JWServlet.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
+    }
+    
+    /**
      * Returns the given parameter associated with the parameter name.
+     * @param paramName - String, the parameter name.
+     * @return Object
      */
     public Object getParam(String paramName) {
         return requestData.get(paramName);
     }
     
     /**
-     * Get parameters.
-     * @return ArrayList|Object|.
      * Returns an ArrayList of all parameters within requestData (The values).
+     * @return ArrayList|Object|
      */
     public ArrayList<Object> getParams() {
         ArrayList<Object> params = new ArrayList();
@@ -106,129 +139,131 @@ public class JWServlet extends HttpServlet {
     }
 
     /**
-     * Get database driver.
-     * @return String
      * Returns the database driver.
+     * @return String
      */
     public String getDbDriver() {
         return dbDriver;
     }
 
     /**
-     * Set database driver.
-     * @param dbDriver
      * Sets the database driver.
+     * @param dbDriver - String
      */
     public void setDbDriver(String dbDriver) {
         this.dbDriver = dbDriver;
     }
 
     /**
-     * Get database URL.
-     * @return String
      * Returns the database Uniform Resource Locator.
+     * @return String
      */
     public String getDbURL() {
         return dbURL;
     }
 
     /**
-     * Set database URL.
-     * @param dbURL
      * Sets the database Uniform Resource Locator.
+     * @param dbURL - String
      */
     public void setDbURL(String dbURL) {
         this.dbURL = dbURL;
     }
 
     /**
-     * Get database username.
-     * @return String
      * Returns the username used to connect to the database.
+     * @return String
      */
     public String getDbUser() {
         return dbUser;
     }
 
     /**
-     * Set database username.
-     * @param dbUser
      * Sets the username used to connect to the database.
+     * @param dbUser - String
      */
     public void setDbUser(String dbUser) {
         this.dbUser = dbUser;
     }
 
     /**
-     *
-     * @return
      * Returns the password of the username used to connect to the database.
+     * @return String
      */
     public String getDbPassword() {
         return dbPassword;
     }
 
     /**
-     * Database password.
-     * @param dbPassword
      * Sets the password of the username used to connect to the database.
+     * @param dbPassword - String
      */
     public void setDbPassword(String dbPassword) {
         this.dbPassword = dbPassword;
     }
 
     /**
-     * Get connection.
-     * @return Connection
      * Returns the connection object.
+     * @return Connection object.
      */
     public Connection getConnection() {
         return connection;
     }
 
     /**
-     * Set connection.
-     * @param connection
      * Sets the connection object.
+     * @param connection - Connection object.
      */
     public void setConnection(Connection connection) {
         this.connection = connection;
     }
 
     /**
-     * Get request data.
-     * @return HashMap|String, Object|
      * Returns the HashMap with all the parameters extracted from the Request object as values.
+     * @return HashMap|String, Object|
      */
     public HashMap<String, Object> getRequestData() {
         return requestData;
     }
 
     /**
-     * Set request data.
-     * @param requestData
      * Sets the HashMap with all the parameters extracted from the Request object as values.
+     * @param requestData - HashMap|String, Object|
      */
     public void setRequestData(HashMap<String, Object> requestData) {
         this.requestData = requestData;
     }
 
     /**
-     * Get request dispatcher.
-     * @return RequestDispatcher
      * Returns the request dispatcher associated with the JWServlet.
+     * @return RequestDispatcher
      */
     public RequestDispatcher getRequestDispatcher() {
         return requestDispatcher;
     }
 
     /**
-     * Set request dispatcher.
-     * @param requestDispatcher
      * Sets the request dispatcher associated with the JWServlet.
+     * @param requestDispatcher - RequestDispatcher
      */
     public void setRequestDispatcher(RequestDispatcher requestDispatcher) {
         this.requestDispatcher = requestDispatcher;
+    }
+
+    /**
+     * Gets the page map associated with the JWServlet.
+     * @return JWHTMLPageMap object.
+     */
+    public JWHTMLPageMap getPageMap() {
+        return pageMap;
+    }
+
+    /**
+     * Sets the page map associated with the JWServlet.
+     * @param pageMap - JWHTMLPageMap object.
+     */
+    public void setPageMap(JWHTMLPageMap pageMap) {
+        this.pageMap = pageMap;
     }
     
 }

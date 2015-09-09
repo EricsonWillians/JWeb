@@ -27,30 +27,26 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 public interface JWDisplayable {
     
     /**
-     * Add CSS.
-     * @param link
      * Adds a Cascading Style Sheet link to the given HTML-like object.
+     * @param link - String
      */
     public void addCSS(String link);
 
     /**
-     * AddJS.
-     * @param link
      * Adds a link to a JavaScript file to the given HTML-like object.
+     * @param link - String
      */
     public void addJS(String link);
 
     /**
-     * Set viewport.
-     * @param content
      * Sets the viewport content in the given HTML-like object.
+     * @param content - String
      */
     public void setViewport(String content);
 
     /**
-     * Append to body.
-     * @param html
      * Appends HTML to the body of the given HTML-like object.
+     * @param html - String
      */
     public void appendToBody(String html);
 

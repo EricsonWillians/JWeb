@@ -26,11 +26,10 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- *
- * @author EricsonWillians
- * @param <J>
  * JWHTMLPage Associative Array.
  * Each JWHTMLPage object has a String page name associated with it.
+ * @author EricsonWillians
+ * @param <J> - Extends JWHTMLPage.
  */
 @SuppressWarnings("FieldMayBeFinal")
 public class JWHTMLPageMap<J extends JWHTMLPage> implements Map<String, J> , JWDisplayable {
@@ -135,9 +134,8 @@ public class JWHTMLPageMap<J extends JWHTMLPage> implements Map<String, J> , JWD
     }
 
     /**
-     *
-     * @param link
-     * Adds a Cascading Style Sheet link to all the JWHTMLPageMap objects within the Associative Array.
+     *Adds a Cascading Style Sheet link to all the JWHTMLPageMap objects within the Associative Array.
+     * @param link - String
      */
     @Override
     public void addCSS(String link) {
@@ -147,9 +145,8 @@ public class JWHTMLPageMap<J extends JWHTMLPage> implements Map<String, J> , JWD
     }
 
     /**
-     *
-     * @param link
      * Adds a link to a JavaScript file to all the JWHTMLPageMap objects within the Associative Array.
+     * @param link - String
      */
     @Override
     public void addJS(String link) {
@@ -159,9 +156,8 @@ public class JWHTMLPageMap<J extends JWHTMLPage> implements Map<String, J> , JWD
     }
 
     /**
-     *
-     * @param content
      * Sets the contents of the viewports of all the JWHTMLPageMap objects within the Associative Array.
+     * @param content - String
      */
     @Override
     public void setViewport(String content) {
@@ -171,9 +167,8 @@ public class JWHTMLPageMap<J extends JWHTMLPage> implements Map<String, J> , JWD
     }
 
     /**
-     *
-     * @param html
      * Appends HTML to the body of all the JWHTMLPageMap objects within the Associative Array.
+     * @param html - String
      */
     @Override
     public void appendToBody(String html) {
