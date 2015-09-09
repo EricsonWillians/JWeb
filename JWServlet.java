@@ -42,14 +42,17 @@ public class JWServlet extends HttpServlet {
     private RequestDispatcher requestDispatcher;
     
     /**
-     *
+     * Database connection related parameters.
      * @param driver
+     * Database driver.
      * @param dbURL
+     * Database URL.
      * @param dbUser
+     * Username used to connect to the database.
      * @param dbPassword
+     * Password of the username used to connect to the database.
      * @throws SQLException
      * @throws ClassNotFoundException
-     * Database connection related constructor parameters.
      */
     public JWServlet(String driver, String dbURL, String dbUser, String dbPassword) throws SQLException, ClassNotFoundException {
         this.dbDriver = driver;
@@ -63,7 +66,7 @@ public class JWServlet extends HttpServlet {
     /**
      *
      * @param request
-     * @param paramNames
+     * @param paramNames 
      * Fetches all the parameters with the given parameter names, storing them inside the JWServlet inner HashMap (requestData).
      */
     public void fetchParams(HttpServletRequest request, String[] paramNames) {
