@@ -28,25 +28,25 @@ public interface JWDisplayable {
     
     /**
      * Adds a Cascading Style Sheet link to the given HTML-like object.
-     * @param link - String
+     * @param link String
      */
     public void addCSS(String link);
 
     /**
      * Adds a link to a JavaScript file to the given HTML-like object.
-     * @param link - String
+     * @param link String
      */
     public void addJS(String link);
 
     /**
      * Sets the viewport content in the given HTML-like object.
-     * @param content - String
+     * @param content String
      */
     public void setViewport(String content);
 
     /**
      * Appends HTML to the body of the given HTML-like object.
-     * @param html - String
+     * @param html String
      */
     public void appendToBody(String html);
 

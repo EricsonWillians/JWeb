@@ -37,8 +37,8 @@ public class JWHTMLPage implements JWDisplayable {
     
     /**
      * JWHTMLPage Constructor.
-     * @param title - String
-     * @param charset - Charset
+     * @param title String
+     * @param charset Charset
      */
     public JWHTMLPage(String title, Charset charset) {
         html = "<!DOCTYPE html><html><head></head><body></body></html>";
@@ -92,7 +92,7 @@ public class JWHTMLPage implements JWDisplayable {
 
     /**
      * Sets the html of the HTML-like object.
-     * @param html - String
+     * @param html String
      */
     public void setHTML(String html) {
         this.html = html;
@@ -108,7 +108,7 @@ public class JWHTMLPage implements JWDisplayable {
 
     /**
      * Sets the Jsoup doc of the HTML-like object.
-     * @param doc - Document
+     * @param doc Document
      */
     public void setDoc(Document doc) {
         this.doc = doc;
@@ -124,7 +124,7 @@ public class JWHTMLPage implements JWDisplayable {
 
     /**
      * Sets the Jsoup head element of the HTML-like object.
-     * @param head - Element
+     * @param head Element
      */
     public void setHead(Element head) {
         this.head = head;
@@ -140,7 +140,7 @@ public class JWHTMLPage implements JWDisplayable {
 
     /**
      * Sets the Jsoup head element of the HTML-like object.
-     * @param body - Element
+     * @param body Element
      */
     public void setBody(Element body) {
         this.body = body;

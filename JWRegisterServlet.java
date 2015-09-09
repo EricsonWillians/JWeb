@@ -35,10 +35,10 @@ public class JWRegisterServlet extends JWServlet {
     
     /**
      * Database connection related parameters.
-     * @param driver - String, Database driver.
-     * @param dbURL - String, Database URL.
-     * @param dbUser - String, Username used to connect to the database.
-     * @param dbPassword - String, Password of the username used to connect to the database.
+     * @param driver String, Database driver.
+     * @param dbURL String, Database URL.
+     * @param dbUser String, Username used to connect to the database.
+     * @param dbPassword String, Password of the username used to connect to the database.
      * @throws SQLException
      * @throws ClassNotFoundException
      */
@@ -48,8 +48,8 @@ public class JWRegisterServlet extends JWServlet {
     
     /**
      * Returns true if the given username or email exists in the database.
-     * @param username - String
-     * @param email - String, email associated with the given username.
+     * @param username String
+     * @param email String, email associated with the given username.
      * @return boolean
      * @throws SQLException
      */

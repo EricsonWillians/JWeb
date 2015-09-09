@@ -19,7 +19,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -50,10 +49,10 @@ public class JWServlet extends HttpServlet {
     
     /**
      * Database connection related parameters.
-     * @param driver - String, Database driver.
-     * @param dbURL - String, Database URL.
-     * @param dbUser - String, Username used to connect to the database.
-     * @param dbPassword - String, Password of the username used to connect to the database.
+     * @param driver String, Database driver.
+     * @param dbURL String, Database URL.
+     * @param dbUser String, Username used to connect to the database.
+     * @param dbPassword String, Password of the username used to connect to the database.
      * @throws SQLException
      * @throws ClassNotFoundException
      */
@@ -87,9 +86,9 @@ public class JWServlet extends HttpServlet {
     
     /**
      * Dispatches the client to the given destination (Resource).
-     * @param request - HttpServletRequest object.
-     * @param response - HttpServletResponse object.
-     * @param destiny  - String
+     * @param request HttpServletRequest object.
+     * @param response HttpServletResponse object.
+     * @param destiny  String
      */
     public void dispatchClient(HttpServletRequest request, HttpServletResponse response, String destiny) {
         setRequestDispatcher(request.getRequestDispatcher(destiny));
@@ -103,8 +102,8 @@ public class JWServlet extends HttpServlet {
     
     /**
      * Prints the desired page in the client (Web browser), given a response object.
-     * @param response - HttpServletResponse object.
-     * @param pageName - String.
+     * @param response HttpServletResponse object.
+     * @param pageName String.
      */
     public void print(HttpServletResponse response, String pageName) {
         try {
@@ -119,7 +118,7 @@ public class JWServlet extends HttpServlet {
     
     /**
      * Returns the given parameter associated with the parameter name.
-     * @param paramName - String, the parameter name.
+     * @param paramName String, the parameter name.
      * @return Object
      */
     public Object getParam(String paramName) {
@@ -148,7 +147,7 @@ public class JWServlet extends HttpServlet {
 
     /**
      * Sets the database driver.
-     * @param dbDriver - String
+     * @param dbDriver String
      */
     public void setDbDriver(String dbDriver) {
         this.dbDriver = dbDriver;
@@ -164,7 +163,7 @@ public class JWServlet extends HttpServlet {
 
     /**
      * Sets the database Uniform Resource Locator.
-     * @param dbURL - String
+     * @param dbURL String
      */
     public void setDbURL(String dbURL) {
         this.dbURL = dbURL;
@@ -180,7 +179,7 @@ public class JWServlet extends HttpServlet {
 
     /**
      * Sets the username used to connect to the database.
-     * @param dbUser - String
+     * @param dbUser String
      */
     public void setDbUser(String dbUser) {
         this.dbUser = dbUser;
@@ -196,7 +195,7 @@ public class JWServlet extends HttpServlet {
 
     /**
      * Sets the password of the username used to connect to the database.
-     * @param dbPassword - String
+     * @param dbPassword String
      */
     public void setDbPassword(String dbPassword) {
         this.dbPassword = dbPassword;
@@ -212,7 +211,7 @@ public class JWServlet extends HttpServlet {
 
     /**
      * Sets the connection object.
-     * @param connection - Connection object.
+     * @param connection Connection object.
      */
     public void setConnection(Connection connection) {
         this.connection = connection;
@@ -228,7 +227,7 @@ public class JWServlet extends HttpServlet {
 
     /**
      * Sets the HashMap with all the parameters extracted from the Request object as values.
-     * @param requestData - HashMap|String, Object|
+     * @param requestData HashMap|String, Object|
      */
     public void setRequestData(HashMap<String, Object> requestData) {
         this.requestData = requestData;
@@ -244,7 +243,7 @@ public class JWServlet extends HttpServlet {
 
     /**
      * Sets the request dispatcher associated with the JWServlet.
-     * @param requestDispatcher - RequestDispatcher
+     * @param requestDispatcher RequestDispatcher
      */
     public void setRequestDispatcher(RequestDispatcher requestDispatcher) {
         this.requestDispatcher = requestDispatcher;
@@ -260,7 +259,7 @@ public class JWServlet extends HttpServlet {
 
     /**
      * Sets the page map associated with the JWServlet.
-     * @param pageMap - JWHTMLPageMap object.
+     * @param pageMap JWHTMLPageMap object.
      */
     public void setPageMap(JWHTMLPageMap pageMap) {
         this.pageMap = pageMap;

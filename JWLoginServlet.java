@@ -23,6 +23,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * @author EricsonWillians
@@ -36,10 +38,10 @@ public class JWLoginServlet extends JWServlet {
     
     /**
      * Database connection related parameters.
-     * @param driver - String, Database driver.
-     * @param dbURL - String, Database URL.
-     * @param dbUser - String, Username used to connect to the database.
-     * @param dbPassword - String, Password of the username used to connect to the database.
+     * @param driver String, Database driver.
+     * @param dbURL String, Database URL.
+     * @param dbUser String, Username used to connect to the database.
+     * @param dbPassword String, Password of the username used to connect to the database.
      * @throws SQLException
      * @throws ClassNotFoundException
      */
@@ -67,6 +69,19 @@ public class JWLoginServlet extends JWServlet {
     }
 
     /**
+     * Sets the given attribute in the request's session.
+     * @param request HttpServletRequest object.
+     * @param key String.
+     * @param value Object.
+     */
+    public void setSessionAttribute(HttpServletRequest request, String key, Object value) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.setAttribute(key, value);
+        }
+    }
+    
+    /**
      * Returns the username associated with the JWLoginServlet object (Used in the web app).
      * @return String
      */
@@ -76,7 +91,7 @@ public class JWLoginServlet extends JWServlet {
 
     /**
      * Sets the username associated with the JWLoginServlet object (Used in the web app).
-     * @param username - String
+     * @param username String
      */
     public void setUsername(String username) {
         this.username = username;
@@ -92,7 +107,7 @@ public class JWLoginServlet extends JWServlet {
 
     /**
      * Sets the username's password associated with the JWLoginServlet object (Used in the web app).
-     * @param password - String
+     * @param password String
      */
     public void setPassword(String password) {
         this.password = password;
