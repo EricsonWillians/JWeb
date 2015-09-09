@@ -25,12 +25,22 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
+/**
+ *
+ * @author EricsonWillians
+ * @param <J>
+ * JWHTMLPage Associative Array.
+ * Each JWHTMLPage object has a String page name associated with it.
+ */
 @SuppressWarnings("FieldMayBeFinal")
 public class JWHTMLPageMap<J extends JWHTMLPage> implements Map<String, J> , JWDisplayable {
  
     private ArrayList<String> pageNames;
     private ArrayList<J> pages;
     
+    /**
+     * Void constructor.
+     */
     public JWHTMLPageMap() {
         pageNames = new ArrayList();
         pages = new ArrayList();
@@ -124,6 +134,11 @@ public class JWHTMLPageMap<J extends JWHTMLPage> implements Map<String, J> , JWD
         return pages;
     }
 
+    /**
+     *
+     * @param link
+     * Adds a Cascading Style Sheet link to all the JWHTMLPageMap objects within the Associative Array.
+     */
     @Override
     public void addCSS(String link) {
         pages.stream().forEach((page) -> {
@@ -131,6 +146,11 @@ public class JWHTMLPageMap<J extends JWHTMLPage> implements Map<String, J> , JWD
         });
     }
 
+    /**
+     *
+     * @param link
+     * Adds a link to a JavaScript file to all the JWHTMLPageMap objects within the Associative Array.
+     */
     @Override
     public void addJS(String link) {
         pages.stream().forEach((page) -> {
@@ -138,6 +158,11 @@ public class JWHTMLPageMap<J extends JWHTMLPage> implements Map<String, J> , JWD
         });
     }
 
+    /**
+     *
+     * @param content
+     * Sets the contents of the viewports of all the JWHTMLPageMap objects within the Associative Array.
+     */
     @Override
     public void setViewport(String content) {
         pages.stream().forEach((page) -> {
@@ -145,6 +170,11 @@ public class JWHTMLPageMap<J extends JWHTMLPage> implements Map<String, J> , JWD
         });
     }
 
+    /**
+     *
+     * @param html
+     * Appends HTML to the body of all the JWHTMLPageMap objects within the Associative Array.
+     */
     @Override
     public void appendToBody(String html) {
         pages.stream().forEach((page) -> {
@@ -152,6 +182,9 @@ public class JWHTMLPageMap<J extends JWHTMLPage> implements Map<String, J> , JWD
         });
     }
 
+    /**
+     * Updates the inner HTML String of all the JWHTMLPageMap objects within the Associative Array.
+     */
     @Override
     public void updateHTML() {
         pages.stream().forEach((page) -> {

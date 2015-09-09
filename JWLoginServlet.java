@@ -18,24 +18,43 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ *
+ * @author EricsonWillians
+ * JWLoginServlet (JWServlet subclass)
+ */
 public class JWLoginServlet extends JWServlet {
     
     private static final long serialVersionUID = 1L;
     private String username;
     private String password;
     
+    /**
+     *
+     * @param driver
+     * @param dbURL
+     * @param dbUser
+     * @param dbPassword
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * Database connection related constructor parameters.
+     */
     public JWLoginServlet(String driver, String dbURL, String dbUser, String dbPassword) throws SQLException, ClassNotFoundException {
         super(driver, dbURL, dbUser, dbPassword);
     }
     
+    /**
+     *
+     * @return
+     * @throws SQLException
+     * Returns true if the username associated with the JWLoginServlet object exists in the Database.
+     */
     public boolean isThereSuchUsername() throws SQLException {
         String sql = "SELECT username FROM users WHERE username = ?";
         boolean result = false;
@@ -50,18 +69,38 @@ public class JWLoginServlet extends JWServlet {
         return result;
     }
 
+    /**
+     *
+     * @return String
+     * Returns the username associated with the JWLoginServlet object (Used in the web app).
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     *
+     * @param username
+     * Sets the username associated with the JWLoginServlet object (Used in the web app).
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     *
+     * @return String
+     * Returns the username's password associated with the JWLoginServlet object (Used in the web app).
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     *
+     * @param password
+     * Sets the username's password associated with the JWLoginServlet object (Used in the web app).
+     */
     public void setPassword(String password) {
         this.password = password;
     }

@@ -23,6 +23,12 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import java.nio.charset.Charset;
 
+/**
+ *
+ * @author EricsonWillians
+ * JWHTMLPage.
+ * An editable HTML-like object.
+ */
 @SuppressWarnings("FieldMayBeFinal")
 public class JWHTMLPage implements JWDisplayable {
 
@@ -31,6 +37,12 @@ public class JWHTMLPage implements JWDisplayable {
     private Element head;
     private Element body;
     
+    /**
+     *
+     * @param title
+     * @param charset
+     * HTML title and default encoding.
+     */
     public JWHTMLPage(String title, Charset charset) {
         html = "<!DOCTYPE html><html><head></head><body></body></html>";
         doc = Jsoup.parse(html);
@@ -73,34 +85,74 @@ public class JWHTMLPage implements JWDisplayable {
         body = doc.body();
     }
     
+    /**
+     *
+     * @return String
+     * Returns the html of the HTML-like object.
+     */
     public String getHTML() {
         return html;
     }
 
+    /**
+     *
+     * @param html
+     * Sets the html of the HTML-like object.
+     */
     public void setHTML(String html) {
         this.html = html;
     }
 
+    /**
+     *
+     * @return
+     * Returns the doc of the HTML-like object.
+     */
     public Document getDoc() {
         return doc;
     }
 
+    /**
+     *
+     * @param doc
+     * Sets the doc of the HTML-like object.
+     */
     public void setDoc(Document doc) {
         this.doc = doc;
     }
 
+    /**
+     *
+     * @return
+     * Returns the Jsoup head element of the HTML-like object.
+     */
     public Element getHead() {
         return head;
     }
 
+    /**
+     *
+     * @param head
+     * Sets the Jsoup head element of the HTML-like object.
+     */
     public void setHead(Element head) {
         this.head = head;
     }
 
+    /**
+     *
+     * @return
+     * Returns the Jsoup body element of the HTML-like object.
+     */
     public Element getBody() {
         return body;
     }
 
+    /**
+     *
+     * @param body
+     * Sets the Jsoup head element of the HTML-like object.
+     */
     public void setBody(Element body) {
         this.body = body;
     }
