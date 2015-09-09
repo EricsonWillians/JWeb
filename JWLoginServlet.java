@@ -71,7 +71,7 @@ public class JWLoginServlet extends JWServlet {
 
     /**
      *
-     * @return String
+     * @return
      * Returns the username associated with the JWLoginServlet object (Used in the web app).
      */
     public String getUsername() {
@@ -89,7 +89,7 @@ public class JWLoginServlet extends JWServlet {
 
     /**
      *
-     * @return String
+     * @return
      * Returns the username's password associated with the JWLoginServlet object (Used in the web app).
      */
     public String getPassword() {
