@@ -26,7 +26,6 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -141,17 +140,16 @@ public class JWForgotServlet extends JWServlet {
     }
     
     /**
-     * Returns a HashMap with the decoded parameters as values, and their respective parameter names as keys.
+     * Returns a HashMap with the decoded parameters as values.
      * @param request HttpServletRequest
      * @return HashMap|String, String|
      */
     public HashMap<String, String> decodeParams(HttpServletRequest request) {
         HashMap<String, String> resultHash = new HashMap();
-        ArrayList<SecretKey> secretKeys = new ArrayList();
-        getParamNames().keySet().stream().forEach((key) -> {
-            byte[] decodedKey = Base64.getDecoder().decode(request.getParameter(getParamNames().get(key)));
-            resultHash.put(getParamNames().get(key), decrypt(new SecretKeySpec(decodedKey, 0, decodedKey.length, "AES"), request.getParameter(getParamNames().get(key))));
-        });
+        byte[] decodedUserKey = Base64.getDecoder().decode(request.getParameter(getParamNames().get("USERNAME_SECRET_KEY")));
+        byte[] decodedPassKey = Base64.getDecoder().decode(request.getParameter(getParamNames().get("PASSWORD_SECRET_KEY")));
+        resultHash.put("USERNAME", decrypt(new SecretKeySpec(decodedUserKey, 0, decodedUserKey.length, "AES"), request.getParameter(getParamNames().get("USERNAME"))));
+        resultHash.put("PASSWORD", decrypt(new SecretKeySpec(decodedPassKey, 0, decodedPassKey.length, "AES"), request.getParameter(getParamNames().get("PASSWORD"))));
         return resultHash;
     }
     
