@@ -27,7 +27,7 @@ API Docs: http://ericsonwillians.github.io/JWeb/apidocs/
         <groupId>org.glassfish.jersey.core</groupId>
         <artifactId>jersey-common</artifactId>
         <version>2.4.1</version>
-        <scope>test</scope>
+        <scope>compile</scope>
     </dependency>
     <dependency>
         <groupId>javax.ws.rs</groupId>
