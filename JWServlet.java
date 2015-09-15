@@ -1,3 +1,5 @@
+package com.jwillians.jweb;
+
 /*
 
 JWeb - Request-based Java Web Framework
@@ -110,6 +112,22 @@ public class JWServlet extends HttpServlet {
             response.setCharacterEncoding("UTF-8");
             PrintWriter pw = response.getWriter();
             pw.write(getPageMap().get(pageName).getHTML());
+        } catch (IOException ex) {
+            Logger.getLogger(JWServlet.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
+    }
+    
+    /**
+     * Prints the given page in the client (Web browser), given a response object.
+     * @param response HttpServletResponse object.
+     * @param page JWHTMLPage object.
+     */
+    public void print(HttpServletResponse response, JWHTMLPage page) {
+        try {
+            response.setCharacterEncoding("UTF-8");
+            PrintWriter pw = response.getWriter();
+            pw.write(page.getHTML());
         } catch (IOException ex) {
             Logger.getLogger(JWServlet.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();
