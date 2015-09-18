@@ -29,18 +29,19 @@ import java.util.TreeSet;
 
 /**
  * JWHTMLPage Associative Array.
- * Each JWHTMLPage object has a String page name associated with it.
  * @author EricsonWillians
  * @param <J> Extends JWHTMLPage.
  */
 @SuppressWarnings("FieldMayBeFinal")
 public class JWHTMLPageMap<J extends JWHTMLPage> implements Map<String, J> , JWDisplayable {
  
+    /** The page names array list ("Keys") */
     private ArrayList<String> pageNames;
+    /** The pages array list ("Values") */
     private ArrayList<J> pages;
     
     /**
-     * Void constructor.
+     * Initializes the inner array lists.
      */
     public JWHTMLPageMap() {
         pageNames = new ArrayList();
@@ -136,7 +137,7 @@ public class JWHTMLPageMap<J extends JWHTMLPage> implements Map<String, J> , JWD
     }
 
     /**
-     *Adds a Cascading Style Sheet link to all the JWHTMLPage objects within the Associative Array.
+     * Adds a Cascading Style Sheet link to all the JWHTMLPage objects within the Associative Array.
      * @param link String
      */
     @Override

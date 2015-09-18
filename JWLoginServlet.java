@@ -29,8 +29,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
+ * A JWLoginServlet is a JWServlet that is used specifically to log the user in the web application.
  * @author EricsonWillians
- * Developer at JWillians.
  */
 public class JWLoginServlet extends JWServlet {
     
@@ -39,11 +39,11 @@ public class JWLoginServlet extends JWServlet {
     private String password;
     
     /**
-     * Database connection related parameters.
-     * @param driver String, Database driver.
-     * @param dbURL String, Database URL.
-     * @param dbUser String, Username used to connect to the database.
-     * @param dbPassword String, Password of the username used to connect to the database.
+     * It sets up the HttpServlet with connection to the database.
+     * @param driver The database driver.
+     * @param dbURL The database uniform resource locator.
+     * @param dbUser The username used to connect to the database.
+     * @param dbPassword The password of the username used to connect to the database.
      * @throws SQLException
      * @throws ClassNotFoundException
      */

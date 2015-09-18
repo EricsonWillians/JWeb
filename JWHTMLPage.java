@@ -26,25 +26,47 @@ import org.jsoup.nodes.Element;
 import java.nio.charset.Charset;
 
 /**
+ * A JWHTMLPage is an HTML document.
  * @author EricsonWillians
- * Developer at JWillians.
  */
 @SuppressWarnings("FieldMayBeFinal")
 public class JWHTMLPage implements JWDisplayable {
 
-    private String html;
+    /** The HTML document as a String. */
+    private StringBuilder html;
+    /** The tags that comprise the HTML document. */
+    private JWTag[] tags;
+    /** The HTML document as a Jsoup Document object. */
     private Document doc;
+    /** The head of the HTML document as a Jsoup Element object. */
     private Element head;
+    /** The body of the HTML document as a Jsoup Element object. */
     private Element body;
     
     /**
-     * JWHTMLPage Constructor.
-     * @param title String
-     * @param charset Charset
+     * It builds a template HTMl document with a given title, encoded with the default charset (Which is probably UTF-8).
+     * @param title The title of the HTML document.
+     */
+    public JWHTMLPage(String title) {
+        html = new StringBuilder();
+        setDefaultTags();
+        doc = Jsoup.parse(html.toString());
+        doc.charset(Charset.defaultCharset());
+        head = doc.head();
+        body = doc.body();
+        head.append("<title>" + title + "</title>");
+        updateHTML();
+    }
+    
+    /**
+     * It builds a template HTMl document with a given title and Charset for the document.
+     * @param title The title of the HTML document.
+     * @param charset The encoding of the HTML document.
      */
     public JWHTMLPage(String title, Charset charset) {
-        html = "<!DOCTYPE html><html><head></head><body></body></html>";
-        doc = Jsoup.parse(html);
+        html = new StringBuilder();
+        setDefaultTags();
+        doc = Jsoup.parse(html.toString());
         doc.charset(charset);
         head = doc.head();
         body = doc.body();
@@ -52,6 +74,21 @@ public class JWHTMLPage implements JWDisplayable {
         updateHTML();
     }
 
+    /**
+     * Initializes the array of JWTag objects.
+     */
+    private void setDefaultTags() {
+        html.append(JWTag.doctype);
+        JWTag[] mainTags = new JWTag[] {
+            new JWTag("html"),
+            new JWTag("head"),
+            new JWTag("body"),
+        }; 
+        for (JWTag t : mainTags) {
+            html.append(t);
+        }
+    }
+    
     @Override
     public void addCSS(String link) {
         head.append("<link rel=\"stylesheet\" href=\"" + link + "\" type=\"text/css\">");
@@ -78,17 +115,22 @@ public class JWHTMLPage implements JWDisplayable {
 
     @Override
     public final void updateHTML() {
-        setHTML(getDoc().html());
-        setDoc(Jsoup.parse(getHTML()));
+        setHTML(new StringBuilder(getDoc().html()));
+        setDoc(Jsoup.parse(getHTML().toString()));
         head = doc.head();
         body = doc.body();
+    }
+    
+    @Override
+    public String toString() {
+        return getHTML().toString();
     }
     
     /**
      * Returns the html of the HTML-like object.
      * @return String
      */
-    public String getHTML() {
+    public StringBuilder getHTML() {
         return html;
     }
 
@@ -96,10 +138,18 @@ public class JWHTMLPage implements JWDisplayable {
      * Sets the html of the HTML-like object.
      * @param html String
      */
-    public void setHTML(String html) {
+    public void setHTML(StringBuilder html) {
         this.html = html;
     }
 
+    /**
+     * Returns the array of JWTag objects that comprise the html of the page.
+     * @return JWTag[]
+     */
+    public JWTag[] getTags() {
+        return tags;
+    }
+    
     /**
      * Returns the Jsoup doc of the HTML-like object.
      * @return Document

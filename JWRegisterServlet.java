@@ -27,20 +27,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * A JWRegisterServlet is a JWServlet that is used specifically to register a new user in a database.
  * @author EricsonWillians.
- * Developer at JWillians.
  */
 public class JWRegisterServlet extends JWServlet {
  
     private static final long serialVersionUID = 1L;
     
     /**
-     * Database connection related parameters.
-     * @param driver String, Database driver.
-     * @param dbURL String, Database URL.
-     * @param dbUser String, Username used to connect to the database.
-     * @param dbPassword String, Password of the username used to connect to the database.
+     * It sets up the HttpServlet with connection to the database.
+     * @param driver The database driver.
+     * @param dbURL The database uniform resource locator.
+     * @param dbUser The username used to connect to the database.
+     * @param dbPassword The password of the username used to connect to the database.
      * @throws SQLException
      * @throws ClassNotFoundException
      */

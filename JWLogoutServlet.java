@@ -30,8 +30,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
+ * A JWLogoutServlet is an HttpServlet that is used specifically to log the user out of the web application.
  * @author EricsonWillians
- * Developer at JWillians.
  */
 public class JWLogoutServlet extends HttpServlet {
     

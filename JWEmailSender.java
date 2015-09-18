@@ -31,6 +31,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 
 /**
+ * A JWEmailSender is an object that wraps javax.mail in order to send emails easily.
  * @author EricsonWillians
  */
 @SuppressWarnings("FieldMayBeFinal")
@@ -46,11 +47,12 @@ public class JWEmailSender {
     private MimeMessage msg;
 
     /**
-     * @param host String
-     * @param port String
-     * @param from String
-     * @param password String
-     * @param to String
+     * It sets up the JWEmailSender object with all the data necessary to send emails.
+     * @param host The host, such as "smtp.gmail.com".
+     * @param port The port, such as 587.
+     * @param from Your email.
+     * @param password The password used to authenticate your email.
+     * @param to The destination email.
      */
     public JWEmailSender(String host, String port, String from, String password, String to) {
         this.host = host;
@@ -70,8 +72,8 @@ public class JWEmailSender {
     
     /**
      * Sends the email.
-     * @param subject String
-     * @param content String
+     * @param subject The subject of the email.
+     * @param content The content of the email.
      */
     public void send(String subject, String content) {
         setMsg(new MimeMessage(session));

@@ -41,6 +41,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.UriBuilder;
 
 /**
+ * A JWForgotServlet is a JWServlet that is used specifically in order to send password recovery links to users.
  * @author EricsonWillians
  */
 public class JWForgotServlet extends JWServlet {
@@ -49,11 +50,11 @@ public class JWForgotServlet extends JWServlet {
     private HashMap<String, String> paramNames;
     
     /**
-     * Database connection related parameters.
-     * @param driver String, Database driver.
-     * @param dbURL String, Database URL.
-     * @param dbUser String, Username used to connect to the database.
-     * @param dbPassword String, Password of the username used to connect to the database.
+     * It sets up the HttpServlet with connection to the database.
+     * @param driver The database driver.
+     * @param dbURL The database uniform resource locator.
+     * @param dbUser The username used to connect to the database.
+     * @param dbPassword The password of the username used to connect to the database.
      * @throws SQLException
      * @throws ClassNotFoundException
      */
@@ -122,7 +123,7 @@ public class JWForgotServlet extends JWServlet {
     
     /**
      * Returns an URI formed with the given link of the forgot servlet and the given encrypted username and password.
-     * @param servletLink
+     * @param servletLink The link to the servlet.
      * @param userName Object[] (SecretKey in the first index, and String in the second).
      * @param password Object[] (SecretKey in the first index, and String in the second).
      * @return URI
@@ -155,7 +156,7 @@ public class JWForgotServlet extends JWServlet {
     
     /**
      * Returns true if the given email exists in the database.
-     * @param email String
+     * @param email The email.
      * @return boolean
      * @throws SQLException 
      */

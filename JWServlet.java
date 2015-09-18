@@ -34,8 +34,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * A JWServlet is an HttpServlet with default connection to a database.
+ * It also has a default JWHTMLPageMap object, which is used to store JWHTMLPage objects, which are used in the HttpServletResponse to the client.
+ * It also provides a default RequestDispatcher object, to dispatch the client to a specific resource in the server.
  * @author EricsonWillians
- * Developer at JWillians.
  */
 public class JWServlet extends HttpServlet {
     
@@ -50,11 +52,11 @@ public class JWServlet extends HttpServlet {
     private RequestDispatcher requestDispatcher;
     
     /**
-     * Database connection related parameters.
-     * @param driver String, Database driver.
-     * @param dbURL String, Database URL.
-     * @param dbUser String, Username used to connect to the database.
-     * @param dbPassword String, Password of the username used to connect to the database.
+     * It sets up the HttpServlet with connection to the database.
+     * @param driver The database driver.
+     * @param dbURL The database uniform resource locator.
+     * @param dbUser The username used to connect to the database.
+     * @param dbPassword The password of the username used to connect to the database.
      * @throws SQLException
      * @throws ClassNotFoundException
      */
@@ -111,7 +113,7 @@ public class JWServlet extends HttpServlet {
         try {
             response.setCharacterEncoding("UTF-8");
             PrintWriter pw = response.getWriter();
-            pw.write(getPageMap().get(pageName).getHTML());
+            pw.write(getPageMap().get(pageName).toString());
         } catch (IOException ex) {
             Logger.getLogger(JWServlet.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();
@@ -127,7 +129,7 @@ public class JWServlet extends HttpServlet {
         try {
             response.setCharacterEncoding("UTF-8");
             PrintWriter pw = response.getWriter();
-            pw.write(page.getHTML());
+            pw.write(page.toString());
         } catch (IOException ex) {
             Logger.getLogger(JWServlet.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();
